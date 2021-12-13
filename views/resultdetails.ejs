@@ -1,0 +1,132 @@
+<%- include('header'); -%>
+
+
+
+
+
+	<div class="card">
+
+		<div class="card-body">
+			<h2 class="font-bold text-lg mb-10">Scan Results</h2>
+
+			<!-- start a table -->
+			<table class="table-fixed w-full">
+
+				<!-- table head -->
+				<thead class="text-left">
+					<tr>
+						<th class="w-1/4 pb-10 text-sm font-extrabold tracking-wide">Scan ID</th>
+						<th class="w-1/4 pb-10 text-sm font-extrabold tracking-wide text-right">Website Name</th>
+						<th class="w-1/2 pb-10 text-sm font-extrabold tracking-wide text-center">URL</th>
+						<th class="w-1/4 pb-10 text-sm font-extrabold tracking-wide text-right">Scan Date & Time</th>
+						<th class="w-1/4 pb-10 text-sm font-extrabold tracking-wide text-right">Scan Level</th>
+						<th class="w-1/4 pb-10 text-sm font-extrabold tracking-wide text-right">Result</th>
+						<th class="w-1/4 pb-10 text-sm font-extrabold tracking-wide text-right">Processing Frequency
+						</th>
+						
+					</tr>
+				</thead>
+				<!-- end table head -->
+
+				<!-- table body -->
+				<tbody class="text-left text-gray-600">
+
+					<!-- item -->
+					<tr>
+						<!-- name -->
+						<th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider flex flex-row items-center w-full">						
+							<p class="ml-3 name-1"><%= data[0][0]['scan_id'] %></p>
+						</th>
+						<!-- name -->
+
+						<!-- product -->
+						<th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right"><p class="ml-3 name-1">
+							<%= data[0][0]['websitename'] %>
+						</p></th>
+						<!-- product -->
+
+						<!-- invoice -->
+						<th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right"><p class="ml-3 name-1">
+							<%= data[0][0]['url'] %>
+						</p>
+						</th>
+						<!-- invoice -->
+
+						<!-- price -->
+						<th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right"><p class="ml-3 name-1">
+							<%= new Date(data[0][0]['date']).getDate()%>/<%= new Date(data[0][0]['date']).getMonth()+1%>/<%= new Date(data[0][0]['date']).getFullYear()%>
+										<%= new Date(data[0][0]['date']).getHours()%>:<%= new Date(data[0][0]['date']).getMinutes()%>:<%= new
+													Date(data[0][0]['date']).getSeconds()%>
+						</p>
+						</th>
+						<!-- price -->
+
+						<!-- status -->
+						<th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right"><p class="ml-3 name-1">
+							<%= data[0][0]['scan_level'] %>
+						</p></th>
+						<!-- status -->
+						<!-- status -->
+						<th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">
+							<p class="ml-3 name-1">
+								<%= data[0][0]['result'] %>
+							</p>
+						</th>
+						<!-- status -->
+						<!-- status -->
+						<th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">
+							<p class="ml-3 name-1">
+								<%= data[0][0]['scan_level'] %>
+							</p>
+						</th>
+						<!-- status -->
+
+					</tr>
+					<!-- item -->
+
+				</tbody>
+				<!-- end table body -->
+
+			</table>
+			<!-- end a table -->
+		</div>
+			
+		<div class="container" role="main" style="width: 63%; margin-left: 15%;">
+			
+			<% for(var i=0; i<data[1].length; i++) {%>
+				<% if(data[1][i].typeCode === 1) {%>
+			    
+			    <div class="card ">
+				    <div class="card-header btn-bs-danger" style="height: 0px;"><%= data[1][i].code %></div>
+			       	<div class="card-body">
+					    <strong class="card-text">error:</strong> <%= data[1][i].message %>
+					    <br><br>
+					    <a class="btn btn-danger"> <p><%= data[1][i].context %></code></p> </a>
+				    </div>
+			    </div>
+			<% } else if (data[1][i].typeCode === 2) {%>
+			
+			
+			<div class="card">
+				<div class="card-header btn-bs-info" style="height: 0px;"><%= data[1][i].code %></div>
+				<div class="card-body">
+					<strong class="card-text">warning:</strong> <%= data[1][i].message %>
+					<br><br>
+					<a class="btn btn-info"> <p><%= data[1][i].context %></code></p></a>
+				</div>
+			</div>
+			<% } else if (data[1][i].typeCode===3) {%>
+			<div class="card">
+				<div class="card-header btn-bs-secondary" style="height: 0px;"><%= data[1][i].code %></div>
+				<div class="card-body">
+					<strong class="card-text">Notices:</strong> <%= data[1][i].message %>
+					<br><br>
+					<a class="btn btn-gray"><p><%= data[1][i].context %></code></p></a>
+				</div>
+			</div>
+			
+			<% }
+		} %>
+		</div>
+
+	</div>

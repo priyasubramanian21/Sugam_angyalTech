@@ -1,0 +1,112 @@
+<%- include('header'); -%>
+<!-- strat content -->
+<div class="bg-gray-100 flex-1 p-6 md:mt-16">
+
+  <!-- congrats & summary -->
+  <div class="grid grid-cols-3 lg:grid-cols-1 gap-5 mt-5 ">
+    <!-- congrats -->
+    <div class="card col-span-2">
+
+      <div class="card-body h-full flex flex-col justify-between">
+
+        <div>
+          <h1 class="text-lg font-bold tracking-wide">Welcome <%=data[0].username%>!</h1>
+          <p class="text-gray-600 mt-2">Some description about users</p>
+        </div>
+
+        <div class="flex flex-row mt-10 items-end">
+
+          <div class="flex-1">
+            <table class="table-auto w-full mt-5 text-right">
+              <tbody>
+            
+                <!-- item -->
+                <tr class="">
+                  <td class="py-4 text-sm text-gray-600 flex flex-row items-center text-left">
+                    <div class="w-8 h-8 overflow-hidden rounded-full">
+                      <img class="w-full h-full object-cover" src="/img/user.svg">
+                    </div>
+                    
+                  </td>
+                </tr>
+                <!-- end item -->
+            
+                <!-- item -->
+                <tr class="">
+                  <td class="py-4 text-sm text-gray-600 flex flex-row items-center">
+                    Name:
+                    
+                  </td>
+                  <td class="py-4 text-xs text-gray-600"><%=data[0].first_name%>
+                    <%=data[0].last_name%></span></td>             
+                </tr>
+                <!-- end item -->
+            
+                <!-- item -->
+                <tr class="">
+                  <td class="py-4 text-sm text-gray-600 flex flex-row items-center">
+                    User Name:
+                  </td>
+                  <td class="py-4 text-xs text-gray-600"><%=data[0].username%></span></td>
+                </tr>
+                <!-- end item -->
+            
+                <!-- item -->
+                <tr class="">
+                  <td class="py-4 text-sm text-gray-600 flex flex-row items-center">
+                    Mobile:
+                    
+                  </td>
+                  <td class="py-4 text-xs text-gray-600"><%=data[0].mobile%></span></td>
+                </tr>
+                <!-- end item -->
+
+                <!-- item -->
+                <tr class="">
+                  <td class="py-4 text-sm text-gray-600 flex flex-row items-center">
+                    Role:
+                
+                  </td>
+                  <td class="py-4 text-xs text-gray-600">
+                    <%=data[0].rolename%></span>
+                  </td>
+                </tr>
+                <!-- end item -->
+            
+              </tbody>
+            
+            </table>
+
+            
+           
+            <a href="#" class="btn-shadow py-3">
+              Edit
+            </a>
+          </div>
+
+          <div class="flex-1 ml-10 w-32 lg:w-auto lg:h-auto overflow-hidden">
+            <img class="object-cover" src="/img/congrats.svg">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    
+
+
+  </div>
+  <!-- end congrats & summary -->
+
+</div>
+<!-- end wrapper -->
+
+<!-- script -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/js/scripts.js"></script>
+<!-- end script -->
+
+</body>
+
+</html>
