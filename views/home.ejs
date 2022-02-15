@@ -1,0 +1,106 @@
+<%- include('header'); -%>
+
+<div class="h-screen flex flex-row flex-wrap">
+
+    <!-- strat content -->
+    <div class="bg-gray-100 flex-1 p-6 md:mt-16">
+
+
+        <!-- General Report -->
+        <div class="grid grid-cols-3 gap-6 xl:grid-cols-1">
+
+            <% if (data.length != 0){ %>
+
+
+                <% for(var i = 0; i < data[1].length; i++) { %>
+                    <div class="report-card">
+                        <div class="card">
+                            <div class="card-body flex flex-col">
+
+
+                                <div class="flex flex-row justify-between items-center">
+                                    <div class="h6 text-indigo-700">
+                                        <%= new URL(data[1][i]['url']).hostname.toLowerCase() %>
+                                    </div>
+                                    <span class="rounded-full text-white badge bg-gray-400 text-xs">
+                        <%= data[1][i]['total'] %>
+                    </span>
+                                </div>
+
+                                <div class="mt-8">
+
+                                    <button class="btn  btn-bs-danger" type="button" value="true" data-argname="badgeError"
+                                            style="float: left;margin-left: 20px;">
+                                        <span class="badge"><%= data[1][i]['errors'] %></span>
+                                        <p style="color: white;"> E</p>
+                                    </button>
+                                    <button class="btn  btn-bs-info" type="button" value="true" data-argname="badgeWarning"
+                                            style="float: left;margin-left: 20px;">
+                                        <span class="badge"><%= data[1][i]['warnings'] %></span>
+                                        <p style="color: white;">W</p>
+                                    </button>
+                                    <button class="btn bg-teal-400" type="button" value="true" data-argname="badgeNotice"
+                                            style="float: left;margin-left: 20px;">
+                                        <span class="badge"><%= data[1][i]['notices'] %></span>
+                                        <p style="color: white;">N</p>
+                                    </button>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+                    </div>
+
+            <% }} %>
+
+
+        </div>
+        <!-- End General Report -->
+
+        <!-- strat Analytics -->
+        <div class="mt-6 grid grid-cols-2 gap-6 xl:grid-cols-1">
+
+            <!-- update section -->
+            <div class="card bg-white border-teal-100 shadow-md text-white">
+                <div class="card-body flex flex-row">
+
+                    <!-- image -->
+                    <div class="img-wrapper w-40 h-40 flex justify-center items-center">
+                        <img src="./images/happy.svg" alt="img title">
+                    </div>
+                    <!-- end image -->
+
+                    <!-- info -->
+                    <div class="py-2 ml-10" style="color: black;">
+                        <h1 class="h6">Hi !</h1>
+
+                        <ul class="mt-4">
+                            <li class="text-sm font-light"><i class="fad fa-check-double mr-2 mb-2"></i> Update
+                                Dashboard UI
+                            </li>
+                            <li class="text-sm font-light"><i class="fad fa-check-double mr-2 mb-2"></i> Fix Issue #74
+                            </li>
+                            <li class="text-sm font-light"><i class="fad fa-check-double mr-2"></i> Publish version
+                                [ V 0.0.1 ]
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end info -->
+
+                </div>
+            </div>
+            <!-- end update section -->
+
+
+        </div>
+        <!-- end Analytics -->
+
+
+    </div>
+    <!-- end quick Info -->
+
+
+</div>
+
+<%- include('foot'); -%>

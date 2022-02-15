@@ -1,0 +1,121 @@
+<%- include('header'); -%>
+
+
+<script src="https://kit.fontawesome.com/afd6aa68df.js" crossorigin="anonymous"></script>
+
+<form id="form" name="myForm" action="/scanResult" method="post">
+
+
+    <div class="h-screen flex flex-row flex-wrap">
+
+        <% if (message.length> 0 && message !='Pending' && message !='Completed' && message !='Done') { se = 'disabled' }else {message = "" ; se = ""; }%>
+
+        <!-- strat content -->
+        <div class="bg-gray-100 flex-1 p-6 md:mt-16">
+
+            <!-- strat Analytics -->
+            <div class="mt-6 grid grid-cols-1 gap-6 xl:grid-cols-1">
+
+                <!-- update section -->
+                <div class="card bg-white border-teal-100 shadow-md text-white">
+                    <div class="card-body flex flex-row">
+
+
+                        <input type="text" id="uname" placeholder="Enter URL" name="uname"  required <%= se %> value="<%= message %>"
+                               style=" box-sizing: border-box; padding-left: 10px;border: 0px solid #ccc;font-size: large;color: rgba(0,0,0,0.67);width: 70%;"
+                        />
+
+
+                        <br>
+
+                    </div>
+                </div>
+                <!-- end update section -->
+
+                <div class="card bg-white border-teal-100 shadow-md text-white">
+                    <div class="card-body flex flex-row">
+
+
+                        <bold>
+                            <p>
+                                Webcrawling :
+                            </p>
+                        </bold>
+                        <span class=" text-white  text-xs">
+                        <select class="btn btn-primary dropdown-toggle" name="webCrawling" id="webCrawling"
+                                style="background: aliceblue;margin-left: 52%;" required>
+                            <option value="">--- Choose ---</option>
+                            <option value="Enabling">Enabling</option>
+                            <option value="Disabling">Disabling</option>
+                        </select>
+
+                    </span>
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="card bg-white border-teal-100 shadow-md text-white">
+                    <div class="card-body flex flex-row">
+
+
+                        <bold>
+                            <p>
+                                Level :
+                            </p>
+                        </bold>
+                        <span class=" text-white  text-xs">
+                        <select class="btn btn-primary dropdown-toggle" name="level" id="level"
+                                style="background: aliceblue;margin-left: 52%;" required>
+                            <option value="">--- Choose a Level ---</option>
+                            <option value="WCAG2A">level A</option>
+                            <option value="WCAG2AA">level AA</option>
+                            <option value="WCAG2AAA">level AAA</option>
+                        </select>
+
+                    </span>
+
+
+                    </div>
+                </div>
+
+                <div class="card bg-white border-teal-100 shadow-md text-white">
+                    <div class="card-body flex flex-row">
+
+
+                        <bold>
+                            <p>
+                                Version :
+                            </p>
+                        </bold>
+                        <span class=" text-white  text-xs">
+                                    <select class="btn btn-primary dropdown-toggle" name="version"
+                                            style="background: aliceblue;margin-left: 40%;" id="version" required>
+                                        <option value="">--- Choose a version ---</option>
+                                        <option value="WCAG 2.0">WCAG 2.0 </option>
+                                        <option value="WCAG 2.1">WCAG 2.1</option>
+                                    </select>
+
+                    </span>
+
+
+                    </div>
+                </div>
+
+                <center>
+                    <button type="submit" <%= se %> class="btn btn-indigo">Scan</button>
+                </center>
+
+
+            </div>
+            <!-- end Analytics -->
+
+
+        </div>
+        <!-- end quick Info -->
+
+    </div>
+</form>
+<%- include('foot'); -%>

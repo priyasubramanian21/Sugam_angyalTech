@@ -3,20 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
-  <link rel="shortcut icon" href="/img/fav.png" type="image/x-icon"> 
+  <link rel="shortcut icon" href="./images/fav.png" type="image/x-icon">
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">  
+  <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
   <title>Sugam Testing tool</title>
 </head>
 <body class="bg-gray-100">
+
+  <style>
+   
+.topnav {
+  overflow: hidden;
+  
+}
+
+.topnav a {
+  float: left;
+  
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #2E768E;
+  color: white;
+  
+}
+  </style>
+
+ 
 
 <!-- start navbar -->
 <div class="md:fixed md:w-full md:top-0 md:z-20 flex flex-row flex-wrap items-center bg-white p-6 border-b border-gray-300">
     
     <!-- logo -->
     <div class="flex-none w-56 flex flex-row items-center">
-      <img src="/img/logo.png" class="w-10 flex-none">
+      <img src="./images/logo.png" class="w-10 flex-none">
       <strong class="capitalize ml-1 flex-1">Sugam</strong>
 
       <button id="sliderBtn" class="flex-none text-right text-gray-900 hidden md:block">
@@ -33,15 +63,17 @@
     
     <!-- navbar content -->
     <div id="navbar"
-      class="animated md:hidden md:fixed md:top-0 md:w-full md:left-0 md:mt-16 md:border-t md:border-b md:border-gray-200 md:p-10 md:bg-white flex-1 pl-3 flex flex-row flex-wrap justify-between items-center md:flex-col md:items-center">
+      class="animated md:hidden md:fixed md:top-0 md:w-full  justify-between items-center md:flex-col md:items-center topnav" >
       <!-- left -->
-      <div
-        class="text-gray-600 md:w-full md:flex md:flex-row md:justify-evenly md:pb-10 md:mb-10 md:border-b md:border-gray-200">
-        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="./dashboard" title="Scan">Dashboard</a>
-        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="./scandata" title="Scan">Scan</a>
-        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="./results" title="Results">Results</a>
-        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="./support" title="Support">Developer Assists</a>
-      </div>
+      
+        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900 " id="/home" href="./" title="Scan" >Dashboard</a>
+        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900 " id="/scan" href="./scan" title="Scan" >Scan</a>
+        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900 " id="/result" href="./result" title="Results" >Results</a>
+        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900 " id="#"  href="#" title="Support" >Developer Assists</a>
+      
+
+
+      
       <!-- end left -->
       <!-- right -->
       <div class="flex flex-row-reverse items-center">
@@ -50,12 +82,12 @@
         <div class="dropdown relative md:static">
       
           <button class="menu-btn focus:outline-none focus:shadow-outline flex flex-wrap items-center">
-            <div class="w-8 h-8 overflow-hidden rounded-full">
+            <!-- <div class="w-8 h-8 overflow-hidden rounded-full">
               <img class="w-full h-full object-cover" src="img/user.svg">
-            </div>
+            </div> -->
       
             <div class="ml-2 capitalize flex ">
-              <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="./login" title="Login">Login</a>          
+              <!-- <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" href="./login" title="Login">Login</a>           -->
             </div>
           </button>
         </div>
@@ -68,6 +100,19 @@
 <!-- end navbar -->
 
 
+<script>
+  var url = window.location.href;
+  var pathname = new URL(url).pathname;
+ 
+  if(pathname == '/resultdetails'){
+    var element = document.getElementById('/results');
+    element.classList.add("active");
+
+  }else{
+      var element = document.getElementById(pathname);
+      element.classList.add("active")
+  }
+</script>
 
 <div class="flex flex-col">
     
@@ -79,4 +124,4 @@
   </div>
 
 
-
+</div>

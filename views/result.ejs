@@ -1,0 +1,99 @@
+<%- include('header'); -%>
+
+<div class="flex flex-row flex-wrap">
+
+    <table style="background: #fff;">
+        <thead>
+        <tr>
+            <th class="px-4 py-2 border-r">#</th>
+            <th class="px-4 py-2 border-r">Website</th>
+            <th class="px-4 py-2 border-r">Scan Date & Time</th>
+            <th class="px-4 py-2 border-r">Scan Level</th>
+            <th class="px-4 py-2 border-r">Errors</th>
+            <th class="px-4 py-2 border-r">Warnings</th>
+            <th class="px-4 py-2 border-r">Notices</th>
+            <th class="px-4 py-2 border-r">Status</th>
+            <th class="px-4 py-2 border-r">Action</th>
+
+
+        </tr>
+        </thead>
+        <tbody class="text-gray-600">
+
+
+        <% if (data.length != 0){ %>
+
+        <%for(var i=0; i<data.length; i++) {%>
+
+
+            <tr>
+                <th class="w-1/2 mb-4 text-xs font-extrabold tracking-wider flex flex-row items-center w-full text-center">
+                    <p class="ml-3 name-1"><%= data[i]['scan_id'] %></p>
+                </th>
+
+                <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right"><p class="ml-3 name-1">
+                        <%= new URL(data[i]['url']).hostname.toLowerCase() %>
+                    </p>
+                </th>
+
+                <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right"><p class="ml-3 name-1">
+                        <%= new Date(data[i]['date']).getDate()%>/<%= new Date(data[i]['date']).getMonth()+1%>/<%= new Date(data[i]['date']).getFullYear()%> <%= new Date(data[i]['date']).getHours()%>:<%= new Date(data[i]['date']).getMinutes()%>
+                    </p>
+                </th>
+
+
+
+                <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right"><p class="ml-3 name-1">
+                        <%= data[i]['level'] %>
+                    </p></th>
+
+                <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">
+                    <p class="ml-3 name-1">
+                        <%= data[i]['errors'] %>
+                    </p>
+                </th>
+                <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">
+                    <p class="ml-3 name-1">
+                        <%= data[i]['warnings'] %>
+                    </p>
+                </th>
+                <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">
+                    <p class="ml-3 name-1">
+                        <%= data[i]['notices'] %>
+                    </p>
+                </th>
+
+
+                <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-right">
+                    <p class="ml-3 name-1">
+                        <% if(data[i]['status']==='Pending') {%>
+                            <i class="fad fa-circle text-center text-yellow-500"></i>
+                        <% }else{%>
+                            <i class="fad fa-circle text-center text-green-500"></i>
+                        <% }%>
+                    </p>
+                </th>
+
+                <th class="w-1/4 mb-4 text-xs font-extrabold tracking-wider text-center">
+                    <% if(data[i]['status']==='Pending') {%>
+                        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900" title="Processing"><i
+                                    class="fad fa-spinner "></i></a>
+                    <% }else{%>
+                        <a class="mr-2 transition duration-500 ease-in-out hover:text-gray-900"
+                           href="./resultDetails?scan_id=<%= data[i]['scan_id'] %>" title="View"><i class="fad fa-eye"></i></a>
+
+                    <% }%>
+
+                </th>
+
+            </tr>
+        <% }} %>
+
+
+
+
+        </tbody>
+    </table>
+</div>
+<!-- End Recent Sales -->
+
